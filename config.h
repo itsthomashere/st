@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "MapleMono NF:pixelsize=21:antialias=true:autohint=true";
+static char *font = "MapleMono NF:pixelsize=20:antialias=true:autohint=true";
 static int borderpx = 0;
 
 /*
@@ -116,25 +116,25 @@ float alpha = 0.7;
 
 //* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    "#393552",
-    "#eb6f92",
-    "#9ccfd8",
-    "#f6c177",
-    "#3e8fb0",
-    "#c4a7e7",
-    "#ea9a97",
-    "#e0def4",
-    "#6e6a86",
-    "#eb6f92",
-    "#9ccfd8",
-    "#f6c177",
-    "#3e8fb0",
-    "#c4a7e7",
-    "#ea9a97",
-    "#e0def4",
+    "#393b44",
+    "#c94f6d",
+    "#81b29a",
+    "#dbc074",
+    "#719cd6",
+    "#9d79d6",
+    "#63cdcf",
+    "#dfdfe0",
+    "#575860",
+    "#d16983",
+    "#8ebaa4",
+    "#e0c989",
+    "#86abdc",
+    "#baa1e2",
+    "#7ad5d6",
+    "#e4e4e5",
     [255] = 0,
     /* more colors can be added after 255 to use with DefaultXX */
-    [256] = "#191724",
+    [256] = "#141312",
 };
 
 /*
