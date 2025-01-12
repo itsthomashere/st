@@ -115,40 +115,30 @@ char *termname = "xterm-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-    [0] = "#141312",  /* hard contrast: #1d2021 / soft contrast: #32302f */
-    [1] = "#cc241d",  /* red     */
-    [2] = "#98971a",  /* green   */
-    [3] = "#d79921",  /* yellow  */
-    [4] = "#458588",  /* blue    */
-    [5] = "#b16286",  /* magenta */
-    [6] = "#689d6a",  /* cyan    */
-    [7] = "#a89984",  /* white   */
-                      /* 8 bright colors */
-    [8] = "#928374",  /* black   */
-    [9] = "#fb4934",  /* red     */
-    [10] = "#b8bb26", /* green   */
-    [11] = "#fabd2f", /* yellow  */
-    [12] = "#83a598", /* blue    */
-    [13] = "#d3869b", /* magenta */
-    [14] = "#8ec07c", /* cyan    */
-    [15] = "#ebdbb2", /* white   */
-    [255] = 0,
-    /* more colors can be added after 255 to use with DefaultXX */
-    [256] = "#000000",
-};
+    "#494D64", "#ED8796", "#A6DA95", "#EED49F", "#8AADF4", "#F5BDE6", "#8BD5CA",
+    "#B8C0E0",
+
+    /* 8 bright colors */
+    "#5B6078", "#ED8796", "#A6DA95", "#EED49F", "#8AADF4", "#F5BDE6", "#8BD5CA",
+    "#A5ADCB",
+
+    [256] = "#CAD3F5", /* default foreground colour */
+    [257] = "#24273A", /* default background colour */
+    [258] = "#F4DBD6",
+    /*575268*/};
 
 /*
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
+unsigned int defaultcs = 258;
+static unsigned int defaultrcs = 258;
 
 /*
  * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
@@ -263,42 +253,12 @@ static char *copyoutput[] = {"/bin/sh", "-c", "st-copyout", "externalpipe",
 
 static Shortcut shortcuts[] = {
     /* mask                 keysym          function        argument */
-    {XK_ANY_MOD, XK_Break, sendbreak, {.i = 0}},
-    {ControlMask, XK_Print, toggleprinter, {.i = 0}},
-    {ShiftMask, XK_Print, printscreen, {.i = 0}},
-    {XK_ANY_MOD, XK_Print, printsel, {.i = 0}},
-    {MODKEY, XK_comma, zoom, {.f = +1}},
-    {MODKEY, XK_period, zoom, {.f = -1}},
-    {MODKEY, XK_g, zoomreset, {.f = 0}},
     {ControlMask | ShiftMask, XK_C, clipcopy, {.i = 0}},
     {ShiftMask, XK_Insert, clippaste, {.i = 0}},
     {ControlMask | ShiftMask, XK_V, clippaste, {.i = 0}},
-    {XK_ANY_MOD, Button2, selpaste, {.i = 0}},
-    {MODKEY, XK_Num_Lock, numlock, {.i = 0}},
-    {ControlMask | ShiftMask, XK_U, iso14755, {.i = 0}},
-    {ShiftMask, XK_Page_Up, kscrollup, {.i = -1}},
-    {ShiftMask, XK_Page_Down, kscrolldown, {.i = -1}},
-    {MODKEY, XK_Page_Up, kscrollup, {.i = -1}},
-    {MODKEY, XK_Page_Down, kscrolldown, {.i = -1}},
-    {MODKEY, XK_k, kscrollup, {.i = 1}},
-    {MODKEY, XK_j, kscrolldown, {.i = 1}},
-    {MODKEY, XK_Up, kscrollup, {.i = 1}},
-    {MODKEY, XK_Down, kscrolldown, {.i = 1}},
-    {MODKEY, XK_u, kscrollup, {.i = -1}},
-    {MODKEY, XK_d, kscrolldown, {.i = -1}},
     {MODKEY, XK_s, changealpha, {.f = -0.05}},
     {MODKEY, XK_a, changealpha, {.f = +0.05}},
     {MODKEY, XK_m, changealpha, {.f = +2.00}},
-    {TERMMOD, XK_Up, zoom, {.f = +1}},
-    {TERMMOD, XK_Down, zoom, {.f = -1}},
-    {TERMMOD, XK_K, zoom, {.f = +1}},
-    {TERMMOD, XK_J, zoom, {.f = -1}},
-    {TERMMOD, XK_U, zoom, {.f = +2}},
-    {TERMMOD, XK_D, zoom, {.f = -2}},
-    {MODKEY, XK_l, externalpipe, {.v = openurlcmd}},
-    {MODKEY, XK_y, externalpipe, {.v = copyurlcmd}},
-    {MODKEY, XK_o, externalpipe, {.v = copyoutput}},
-    {TERMMOD, XK_Return, newterm, {.i = 0}},
     {ControlMask, XK_plus, zoom, {.f = +1}},
     {ControlMask, XK_minus, zoom, {.f = -1}},
 
