@@ -112,7 +112,7 @@ char *termname = "xterm-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.7;
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -134,15 +134,20 @@ static const char *colorname[] = {
     [13] = "#d3869b", /* magenta */
     [14] = "#8ec07c", /* cyan    */
     [15] = "#ebdbb2", /* white   */
+
+    [255] = 0,
+    [256] = "#141312", /* hard contrast: #1d2021 / soft contrast: #32302f */
+    [257] = "#a89984", /* white   */
+    [258] = "#a89984", /* white   */
 };
 
 /*
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 258;
 
 /*
  * Default shape of cursor
@@ -259,6 +264,9 @@ static Shortcut shortcuts[] = {
     {TERMMOD, XK_Num_Lock, numlock, {.i = 0}},
     {ShiftMask, XK_Page_Up, kscrollup, {.i = -1}},
     {ShiftMask, XK_Page_Down, kscrolldown, {.i = -1}},
+    {MODKEY, XK_s, changealpha, {.f = -0.05}},
+    {MODKEY, XK_a, changealpha, {.f = +0.05}},
+    {MODKEY, XK_m, changealpha, {.f = +2.00}},
 };
 
 /*
