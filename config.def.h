@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Victor Mono:pixelsize=19:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:pixelsize=17:antialias=true:autohint=true";
 static char *font2[] = {
     "JetBrainsMono Nerd Font :pixelsize=15:antialias=true:autohint=true"};
 static int borderpx = 0;
@@ -115,7 +115,7 @@ char *termname = "xterm-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.9;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -139,15 +139,17 @@ static const char *colorname[] = {
     [15] = "#ebdbb2", /* white   */
     [255] = 0,
     /* more colors can be added after 255 to use with DefaultXX */
-    [256] = "#000000",
+    [256] = "#ebdbb2",
+	[257] = "#ebdbb2",
+	[258] = "#141312",
 };
 
 /*
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 258;
+unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
 /*
@@ -189,37 +191,37 @@ static unsigned int defaultattr = 11;
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-    /* {"font", STRING, &font}, */
-    /* {"fontalt0", STRING, &font2[0]}, */
-    /* {"color0", STRING, &colorname[0]}, */
-    /* {"color1", STRING, &colorname[1]}, */
-    /* {"color2", STRING, &colorname[2]}, */
-    /* {"color3", STRING, &colorname[3]}, */
-    /* {"color4", STRING, &colorname[4]}, */
-    /* {"color5", STRING, &colorname[5]}, */
-    /* {"color6", STRING, &colorname[6]}, */
-    /* {"color7", STRING, &colorname[7]}, */
-    /* {"color8", STRING, &colorname[8]}, */
-    /* {"color9", STRING, &colorname[9]}, */
-    /* {"color10", STRING, &colorname[10]}, */
-    /* {"color11", STRING, &colorname[11]}, */
-    /* {"color12", STRING, &colorname[12]}, */
-    /* {"color13", STRING, &colorname[13]}, */
-    /* {"color14", STRING, &colorname[14]}, */
-    /* {"color15", STRING, &colorname[15]}, */
-    /* {"background", STRING, &colorname[258]}, */
-    /* {"foreground", STRING, &colorname[259]}, */
-    /* {"cursorColor", STRING, &colorname[256]}, */
-    /* {"termname", STRING, &termname}, */
-    /* {"shell", STRING, &shell}, */
-    /* {"blinktimeout", INTEGER, &blinktimeout}, */
-    /* {"bellvolume", INTEGER, &bellvolume}, */
-    /* {"tabspaces", INTEGER, &tabspaces}, */
-    /* {"borderpx", INTEGER, &borderpx}, */
-    /* {"cwscale", FLOAT, &cwscale}, */
-    /* {"chscale", FLOAT, &chscale}, */
-    /* {"alpha", FLOAT, &alpha}, */
-    /* {"ximspot_update_interval", INTEGER, &ximspot_update_interval}, */
+     {"font", STRING, &font},
+     {"fontalt0", STRING, &font2[0]}, 
+     {"color0", STRING, &colorname[0]}, 
+     {"color1", STRING, &colorname[1]},
+     {"color2", STRING, &colorname[2]},
+     {"color3", STRING, &colorname[3]},
+     {"color4", STRING, &colorname[4]},
+     {"color5", STRING, &colorname[5]},
+     {"color6", STRING, &colorname[6]},
+     {"color7", STRING, &colorname[7]},
+     {"color8", STRING, &colorname[8]},
+     {"color9", STRING, &colorname[9]},
+     {"color10", STRING, &colorname[10]},
+     {"color11", STRING, &colorname[11]},
+     {"color12", STRING, &colorname[12]},
+     {"color13", STRING, &colorname[13]},
+     {"color14", STRING, &colorname[14]},
+     {"color15", STRING, &colorname[15]},
+     {"background", STRING, &colorname[258]},
+     {"foreground", STRING, &colorname[257]},
+     {"cursorColor", STRING, &colorname[256]},
+     {"termname", STRING, &termname},
+     {"shell", STRING, &shell},
+     {"blinktimeout", INTEGER, &blinktimeout},
+     {"bellvolume", INTEGER, &bellvolume},
+     {"tabspaces", INTEGER, &tabspaces},
+     {"borderpx", INTEGER, &borderpx},
+     {"cwscale", FLOAT, &cwscale},
+     {"chscale", FLOAT, &chscale},
+     {"alpha", FLOAT, &alpha},
+     {"ximspot_update_interval", INTEGER, &ximspot_update_interval}, 
 };
 
 /*
